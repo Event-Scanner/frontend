@@ -4,7 +4,7 @@ import { useState } from "react";
 function Scanner() {
   const delay = 100;
   const previewStyle = {
-    width: "60%",
+    height: "60%",
   };
   const [result, setResult] = useState("");
 
