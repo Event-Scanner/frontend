@@ -21,6 +21,10 @@ function Scanner() {
     <div>
       <QrReader
         className="mx-auto"
+        constraints={{
+          audio: false,
+          video: { facingMode: "environment" },
+        }}
         delay={delay}
         onError={handleError}
         onScan={handleScan}
