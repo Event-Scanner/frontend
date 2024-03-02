@@ -1,22 +1,10 @@
 import QrReader from "react-qr-scanner";
-import { useState } from "react";
 
-function Scanner() {
+function Scanner(props) {
   const delay = 100;
   const previewStyle = {
     width: "60%",
   };
-  const [result, setResult] = useState("");
-
-  function handleError(err) {
-    console.error(err);
-  }
-
-  function handleScan(data) {
-    if (data) {
-      if (data["text"]) setResult(data["text"]);
-    }
-  }
 
   return (
     <div>
@@ -27,13 +15,10 @@ function Scanner() {
           video: { facingMode: "environment" },
         }}
         delay={delay}
-        onError={handleError}
-        onScan={handleScan}
+        onError={props.handleError}
+        onScan={props.handleScan}
         style={previewStyle}
       />
-      <div className="p-2">
-        <p>{result}</p>
-      </div>
     </div>
   );
 }
