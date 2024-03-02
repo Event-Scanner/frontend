@@ -4,7 +4,7 @@ import { useState } from "react";
 function Scanner() {
   const delay = 100;
   const previewStyle = {
-    width: "80%",
+    width: "60%",
   };
   const [result, setResult] = useState("");
 
@@ -13,8 +13,9 @@ function Scanner() {
   }
 
   function handleScan(data) {
-    setResult(data);
-    console.log(result);
+    if (data) {
+      if (data["text"]) setResult(data["text"]);
+    }
   }
 
   return (
@@ -30,6 +31,9 @@ function Scanner() {
         onScan={handleScan}
         style={previewStyle}
       />
+      <div className="p-2">
+        <p>{result}</p>
+      </div>
     </div>
   );
 }
