@@ -4,7 +4,7 @@ import { useState } from "react";
 function Scanner() {
   const delay = 100;
   const previewStyle = {
-    width: "70%",
+    width: "60%",
   };
   const [result, setResult] = useState("");
 
@@ -13,13 +13,14 @@ function Scanner() {
   }
 
   function handleScan(data) {
-    console.log(data);
     setResult(data);
+    console.log(result);
   }
 
   return (
     <div>
       <QrReader
+        className="mx-auto"
         delay={delay}
         onError={handleError}
         onScan={handleScan}
