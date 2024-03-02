@@ -4,7 +4,7 @@ import { useState } from "react";
 function Scanner() {
   const delay = 100;
   const previewStyle = {
-    height: "60%",
+    width: "80%",
   };
   const [result, setResult] = useState("");
 
@@ -21,10 +21,7 @@ function Scanner() {
     <div>
       <QrReader
         className="mx-auto"
-        constraints={{
-          audio: false,
-          video: { facingMode: "environment" },
-        }}
+        constraints={{ aspectRatio: 1, facingMode: { ideal: "environment" } }}
         delay={delay}
         onError={handleError}
         onScan={handleScan}
