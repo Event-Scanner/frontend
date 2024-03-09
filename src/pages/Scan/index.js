@@ -9,6 +9,7 @@ function Scan() {
     data: {
       name: "",
       email: "",
+      SEAT: "",
       GATE: "",
       HALL: "",
     },
@@ -40,13 +41,15 @@ function Scan() {
           )
           .then((response) => {
             setStatus(response.status);
+            const data = response.data;
             setResult({
-              message: response.data["message"],
+              message: data["message"],
               data: {
-                name: response.data["data"]["name"],
-                email: response.data["data"]["email"],
-                GATE: response.data["data"]["GATE"],
-                HALL: response.data["data"]["HALL"],
+                name: data["data"]["name"],
+                email: data["data"]["email"],
+                SEAT: data["data"]["SEAT"],
+                GATE: data["data"]["GATE"],
+                HALL: data["data"]["HALL"],
               },
             });
             setSpinner(false);
@@ -74,6 +77,7 @@ function Scan() {
         </p>
         <p>Name = {result["data"]["name"] || ""}</p>
         <p>Email = {result["data"]["email"] || ""}</p>
+        <p>Seat = {result["data"]["SEAT"] || ""}</p>
         <p>Gate Entry = {result["data"]["GATE"] === true ? "true" : "false"}</p>
         <p>Hall Entry = {result["data"]["HALL"] === true ? "true" : "false"}</p>
       </div>
